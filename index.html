@@ -1,22 +1,37 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
-    <meta charset="UTF-8">
-    <title>What to Eat Tonight</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>What should we eat tonight?</title>
+    <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <header>
-      <h1>What to Eat Tonight</h1>
-    </header>
-    <main>
-      <div id="food-result">
-        <p>Feeling hungry?</p>
-        <p>Tap the button below to find something delicious to eat tonight!</p>
-      </div>
-      <button id="suggest-button">Suggest Something Delicious</button>
-    </main>
-    <script src="app.js"></script>
+    <div class="container">
+      <header>
+        <h1 class="title">What should we eat tonight?</h1>
+      </header>
+      <main>
+        <div class="card">
+          <div class="card-image">
+            <img
+              src="https://spoonacular.com/recipeImages/563523-312x231.jpg"
+              alt=""
+            />
+          </div>
+          <div class="card-content">
+            <h2 class="card-title">Spicy Grilled Shrimp</h2>
+            <p class="card-description">
+              This spicy grilled shrimp is an easy recipe to throw on the grill
+              for a quick and healthy dinner.
+            </p>
+          </div>
+        </div>
+        <button id="generate-btn" class="generate-btn">Generate</button>
+      </main>
+    </div>
+    <script src="script.js"></script>
   </body>
 </html>
+
