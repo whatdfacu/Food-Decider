@@ -2,18 +2,21 @@
 <html>
   <head>
     <meta charset="UTF-8">
-    <title>What to Eat</title>
+    <title>What to Eat Tonight</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
   </head>
   <body>
-    <div class="container">
-      <h1>What to Eat</h1>
-      <p>Click the button to decide what to eat based on the weather in your location!</p>
-      <button id="decide-button">Decide for me!</button>
-      <div class="result-container">
-        <p id="result"></p>
+    <header>
+      <h1>What to Eat Tonight</h1>
+    </header>
+    <main>
+      <div id="food-result">
+        <p>Feeling hungry?</p>
+        <p>Tap the button below to find something delicious to eat tonight!</p>
       </div>
-    </div>
+      <button id="suggest-button">Suggest Something Delicious</button>
+    </main>
     <script src="app.js"></script>
   </body>
 </html>
