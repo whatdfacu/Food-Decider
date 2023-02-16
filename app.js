@@ -1,56 +1,29 @@
-const openWeatherMapApiKey = '91440eb7efb9fc43a88b9589867ec8c0';
-const openWeatherMapEndpoint = 'https://api.openweathermap.org/data/2.5/weather';
+const apiKey = '4c54f73c67b74562ae87db4a27222873';
+const apiUrl = 'https://api.spoonacular.com/recipes/random';
 
-const spoonacularApiKey = 'bcb5d5cd0f614aec8ce45bc04b087c6e';
-const spoonacularEndpoint = 'https://api.spoonacular.com/recipes/complexSearch';
+const suggestButton = document.getElementById('suggest-button');
+const foodResult = document.getElementById('food-result');
 
-const decideButton = document.getElementById('decide-button');
-const result = document.getElementById('result');
-
-decideButton.addEventListener('click', () => {
-  const weatherInput = document.getElementById('weather').value.toLowerCase();
-
-  // Make request to OpenWeatherMap API to get weather information
-  const openWeatherMapParams = new URLSearchParams({
-    q: weatherInput,
-    appid: openWeatherMapApiKey,
-  });
-
-  fetch(`${openWeatherMapEndpoint}?${openWeatherMapParams}`)
+suggestButton.addEventListener('click', () => {
+  fetch(`${apiUrl}?apiKey=${apiKey}`)
     .then(response => response.json())
     .then(data => {
-      const weatherCode = data.weather[0].id;
+      const food = data.recipes[0];
+      const title = food.title;
+      const image = food.image;
+      const url = food.sourceUrl;
 
-      // Make request to Spoonacular API to get food options
-      const spoonacularParams = new URLSearchParams({
-        cuisine: 'American,Chinese,Mexican,Italian',
-        sort: 'popularity',
-        apiKey: spoonacularApiKey,
-      });
+      const html = `
+        <p>How about this?</p>
+        <h2>${title}</h2>
+        <a href="${url}" target="_blank"><img src="${image}" alt="${title}"></a>
+      `;
 
-      fetch(`${spoonacularEndpoint}?${spoonacularParams}`)
-        .then(response => response.json())
-        .then(data => {
-          const foods = data.results;
-          const filteredFoods = foods.filter(food => {
-            const weatherCodes = food.weather;
-            return weatherCodes.includes(weatherCode);
-          });
-          if (filteredFoods.length > 0) {
-            const randomIndex = Math.floor(Math.random() * filteredFoods.length);
-            const chosenFood = filteredFoods[randomIndex];
-            result.textContent = `How about some ${chosenFood.title} for ${weatherInput}?`;
-          } else {
-            result.textContent = 'Sorry, I couldn\'t figure out what to suggest based on the weather you entered.';
-          }
-        })
-        .catch(error => {
-          result.textContent = 'Error: Could not fetch food data';
-          console.error(error);
-        });
+      foodResult.innerHTML = html;
     })
     .catch(error => {
-      result.textContent = 'Error: Could not fetch weather data';
-      console.error(error);
+      console.error('An error occurred:', error);
+      foodResult.textContent = 'Sorry, we could not suggest any food at this time.';
     });
 });
+
