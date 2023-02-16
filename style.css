@@ -1,61 +1,41 @@
-body {
+#food-decider {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   height: 100vh;
-  background-color: #f5f5f5;
-  color: #333;
-  font-family: Arial, sans-serif;
-}
-
-h1 {
-  margin-bottom: 40px;
-  font-size: 3em;
-  text-align: center;
 }
 
 #food-options {
-  display: none;
+  display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  max-width: 600px;
-  margin: 0 auto;
+  gap: 10px;
 }
 
 #food-options p {
-  margin: 20px;
-  padding: 10px 20px;
-  background-color: #ff6347;
-  border: none;
-  border-radius: 5px;
-  color: white;
-  font-size: 1.5em;
+  background-color: #ffc107;
+  color: #fff;
+  padding: 10px;
+  border-radius: 10px;
+  font-size: 1.2em;
   cursor: pointer;
-}
-
-#food-options p:hover {
-  background-color: #ff7f50;
 }
 
 #decide-button {
-  margin-top: 40px;
-  padding: 10px 20px;
-  background-color: #00bfff;
+  background-color: #03a9f4;
+  color: #fff;
+  padding: 10px;
   border: none;
-  border-radius: 5px;
-  color: white;
-  font-size: 2em;
+  border-radius: 10px;
+  font-size: 1.2em;
+  margin: 20px;
   cursor: pointer;
 }
 
-#decide-button:hover {
-  background-color: #1e90ff;
-}
-
 #result {
-  margin-top: 40px;
-  font-size: 2em;
+  font-size: 1.5em;
+  font-weight: bold;
   text-align: center;
 }
 
